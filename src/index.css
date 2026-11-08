@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+    --color-deep: #090B10;
+    --color-graphite: #121722;
+    --color-gray: #202938;
+    --color-text: #F4F6FA;
+    --color-accent: #36A3FF;
+    --color-accent-deep: #142B50;
+    --color-muted: #8B95A8;
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-deep);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-deep);
+}
+
+/* Utility classes */
+.container-app {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container-app {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.card {
+    background-color: var(--color-graphite);
+    border: 1px solid rgba(32, 41, 56, 0.8);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(54, 163, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2b8ce6;
+}
+
+.btn-ghost {
+    background-color: transparent;
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+    background-color: var(--color-gray);
+}
