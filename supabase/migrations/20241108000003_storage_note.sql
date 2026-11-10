@@ -1,0 +1,15 @@
+-- ============================================================
+-- STORAGE BUCKETS (create via Supabase Dashboard > Storage)
+-- ============================================================
+-- Create the following PUBLIC buckets:
+--   1. covers         - title cover images
+--   2. chapter-pages  - chapter page images  
+--   3. avatars        - user avatars
+--
+-- Policies (example for covers):
+--   SELECT: public (anyone can view)
+--   INSERT/UPDATE: authenticated users with uploader+ role
+--
+-- This SQL file is a documentation placeholder.
+-- Storage buckets cannot be fully created via plain SQL migrations
+-- in all Supabase versions — use the Dashboard or Management API.
