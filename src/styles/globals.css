@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --wolf-black: #090B10;
+    --wolf-graphite: #121722;
+    --wolf-gray: #202938;
+    --wolf-white: #F4F6FA;
+    --wolf-ice: #36A3FF;
+    --wolf-deep: #142B50;
+  }
+
+  * {
+    @apply border-wolf-gray/50;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-wolf-black text-wolf-white font-sans;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-wolf-graphite;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-wolf-gray rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-wolf-ice/60;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-wolf-ice px-4 py-2.5 text-sm font-semibold text-wolf-black transition-all hover:bg-wolf-ice/90 hover:shadow-wolf focus:outline-none focus:ring-2 focus:ring-wolf-ice/50 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-wolf-gray px-4 py-2.5 text-sm font-semibold text-wolf-white transition-all hover:bg-wolf-gray/80 focus:outline-none focus:ring-2 focus:ring-wolf-ice/30 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-wolf-white/80 transition-all hover:bg-wolf-gray/50 hover:text-wolf-white focus:outline-none focus:ring-2 focus:ring-wolf-ice/20;
+  }
+
+  .card {
+    @apply rounded-xl bg-wolf-graphite border border-wolf-gray/40 overflow-hidden transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:border-wolf-ice/40 hover:shadow-wolf hover:-translate-y-0.5;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-wolf-gray/60 bg-wolf-black px-4 py-2.5 text-sm text-wolf-white placeholder:text-wolf-white/40 focus:border-wolf-ice focus:outline-none focus:ring-2 focus:ring-wolf-ice/20 transition-all;
+  }
+
+  .section-title {
+    @apply font-display text-xl font-semibold tracking-tight text-wolf-white md:text-2xl;
+  }
+}
