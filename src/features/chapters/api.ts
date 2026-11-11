@@ -1,6 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
 import type { ChapterWithPages, ChapterNav } from '@/types/reader'
-import type { Chapter } from '@/types/database'
 
 export async function fetchChapterByNumber(
   titleSlug: string,
