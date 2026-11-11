@@ -18,7 +18,6 @@ export function ReaderVertical({ pages, onProgress, initialPage = 1 }: ReaderVer
   const reportProgress = useCallback(() => {
     if (!containerRef.current || pages.length === 0 || !onProgress) return
 
-    const container = containerRef.current
     const scrollTop = window.scrollY
     const viewportHeight = window.innerHeight
     const mid = scrollTop + viewportHeight / 2

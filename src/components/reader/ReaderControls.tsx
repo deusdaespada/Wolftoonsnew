@@ -11,15 +11,14 @@ import {
 } from 'lucide-react'
 import { useReaderStore } from '@/stores/readerStore'
 import type { ChapterNav } from '@/types/reader'
-import { cn } from '@/lib/utils'
 
 interface ReaderControlsProps {
   nav: ChapterNav
   progressPercent: number
-  isNovel: boolean
+  isNovel?: boolean
 }
 
-export function ReaderControls({ nav, progressPercent, isNovel }: ReaderControlsProps) {
+export function ReaderControls({ nav, progressPercent }: ReaderControlsProps) {
   const {
     showControls,
     setShowControls,
