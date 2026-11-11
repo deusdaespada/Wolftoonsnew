@@ -18,7 +18,7 @@ export function ReaderPage() {
   const { data: nav, isLoading, error } = useChapter(slug ?? '', chapterNumber)
   const { data: savedProgress } = useReadingProgress(nav?.current.id)
   const saveProgress = useSaveProgress()
-  const { settings, setShowControls, toggleControls } = useReaderStore()
+  const { settings, setShowControls } = useReaderStore()
   const user = useAuthStore((s) => s.user)
 
   const [progressPercent, setProgressPercent] = useState(0)
