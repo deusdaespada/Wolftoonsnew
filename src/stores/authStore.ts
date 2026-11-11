@@ -50,8 +50,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         set({
           user: session.user,
           session,
-          profile: profile as Profile | null,
-          roles: (rolesData as RoleName[]) || [],
+          profile: profile as unknown as Profile | null,
+          roles: (rolesData as unknown as RoleName[]) || [],
           isLoading: false,
           isInitialized: true,
         })
@@ -81,8 +81,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           set({
             user: session.user,
             session,
-            profile: profile as Profile | null,
-            roles: (rolesData as RoleName[]) || [],
+            profile: profile as unknown as Profile | null,
+            roles: (rolesData as unknown as RoleName[]) || [],
           })
         } else if (event === 'SIGNED_OUT') {
           set({
@@ -149,8 +149,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       .rpc('get_user_roles', { _user_id: user.id })
     
     set({
-      profile: profile as Profile | null,
-      roles: (rolesData as RoleName[]) || [],
+      profile: profile as unknown as Profile | null,
+      roles: (rolesData as unknown as RoleName[]) || [],
     })
   },
 

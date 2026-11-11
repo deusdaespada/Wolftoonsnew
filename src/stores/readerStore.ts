@@ -4,7 +4,6 @@ import type {
   ReaderSettings,
   ReaderMode,
   NovelSettings,
-  ImageReaderSettings,
 } from '@/types/reader'
 import { DEFAULT_READER_SETTINGS } from '@/types/reader'
 
