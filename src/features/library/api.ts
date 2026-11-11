@@ -243,7 +243,7 @@ export async function fetchProfileByUsername(username: string): Promise<PublicPr
 
   return {
     ...data,
-    roles: (roles as string[]) ?? [],
+    roles: (roles as unknown as string[]) ?? [],
     followers_count: followers.count ?? 0,
     following_count: following.count ?? 0,
     library_count: library.count ?? 0,
