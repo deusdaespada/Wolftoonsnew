@@ -345,7 +345,7 @@ export async function fetchAdminUsers(params?: {
     })
     users.push({
       ...profile,
-      roles: (roles as string[]) ?? [],
+      roles: (roles as unknown as string[]) ?? [],
     })
   }
 
