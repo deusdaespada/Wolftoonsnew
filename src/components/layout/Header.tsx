@@ -4,7 +4,6 @@ import { Menu, X, Search, User, LogOut, Settings, BookOpen, Heart, History, Crow
 import { useAuthStore } from '@/stores/authStore'
 import { Button } from '@/components/ui/Button'
 import { NotificationBell } from '@/components/comments/NotificationBell'
-import { cn } from '@/lib/utils'
 
 const navLinks = [
   { to: '/', label: 'Início' },
