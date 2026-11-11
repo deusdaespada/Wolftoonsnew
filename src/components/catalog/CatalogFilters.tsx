@@ -1,6 +1,5 @@
 import { Search, X, SlidersHorizontal } from 'lucide-react'
 import { useState } from 'react'
-import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 import type { CatalogFilters as Filters } from '@/types/title'
