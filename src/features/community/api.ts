@@ -1,6 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
 import type { CommentWithAuthor, CreateCommentInput, ReportReason, NotificationItem } from '@/types/community'
-import type { Profile } from '@/types/database'
 
 const AUTHOR_SELECT = 'id, username, display_name, avatar_url, is_vip'
 
