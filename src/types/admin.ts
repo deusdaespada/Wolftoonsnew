@@ -1,4 +1,4 @@
-import type { Title, Chapter, Profile, Report } from './database'
+import type { Title, Profile, Report } from './database'
 import type { TitleCategory, TitleStatus } from './database'
 
 export type AdminStats = {

@@ -11,7 +11,16 @@ export type Subscription = {
   updated_at: string
 }
 
-export const VIP_PLANS = [
+export type VipPlan = {
+  id: string
+  name: string
+  description: string
+  price_label: string
+  benefits: string[]
+  highlighted?: boolean
+}
+
+export const VIP_PLANS: VipPlan[] = [
   {
     id: 'vip_monthly',
     name: 'VIP Mensal',
@@ -37,4 +46,4 @@ export const VIP_PLANS = [
       'Prioridade em solicitações',
     ],
   },
-] as const
+]

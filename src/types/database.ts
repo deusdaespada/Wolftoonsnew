@@ -45,6 +45,7 @@ export type Database = {
           is_vip?: boolean
           updated_at?: string
         }
+        Relationships: []
       }
       roles: {
         Row: {
@@ -64,6 +65,7 @@ export type Database = {
           name?: string
           description?: string | null
         }
+        Relationships: []
       }
       user_roles: {
         Row: {
@@ -86,6 +88,7 @@ export type Database = {
           role_id?: number
           granted_by?: string | null
         }
+        Relationships: []
       }
       genres: {
         Row: {
@@ -105,6 +108,7 @@ export type Database = {
           name?: string
           slug?: string
         }
+        Relationships: []
       }
       titles: {
         Row: {
@@ -178,6 +182,7 @@ export type Database = {
           updated_at?: string
           created_by?: string | null
         }
+        Relationships: []
       }
       title_genres: {
         Row: {
@@ -192,6 +197,7 @@ export type Database = {
           title_id?: string
           genre_id?: number
         }
+        Relationships: []
       }
       chapters: {
         Row: {
@@ -244,6 +250,7 @@ export type Database = {
           updated_at?: string
           created_by?: string | null
         }
+        Relationships: []
       }
       chapter_pages: {
         Row: {
@@ -272,6 +279,7 @@ export type Database = {
           width?: number | null
           height?: number | null
         }
+        Relationships: []
       }
       user_library: {
         Row: {
@@ -303,6 +311,7 @@ export type Database = {
           notes?: string | null
           updated_at?: string
         }
+        Relationships: []
       }
       favorites: {
         Row: {
@@ -322,6 +331,7 @@ export type Database = {
           user_id?: string
           title_id?: string
         }
+        Relationships: []
       }
       reading_history: {
         Row: {
@@ -353,6 +363,7 @@ export type Database = {
           progress_percent?: number
           last_read_at?: string
         }
+        Relationships: []
       }
       comments: {
         Row: {
@@ -393,6 +404,7 @@ export type Database = {
           is_hidden?: boolean
           updated_at?: string
         }
+        Relationships: []
       }
       comment_likes: {
         Row: {
@@ -412,6 +424,7 @@ export type Database = {
           comment_id?: string
           user_id?: string
         }
+        Relationships: []
       }
       follows: {
         Row: {
@@ -431,6 +444,7 @@ export type Database = {
           follower_id?: string
           following_id?: string
         }
+        Relationships: []
       }
       notifications: {
         Row: {
@@ -462,6 +476,7 @@ export type Database = {
           link?: string | null
           is_read?: boolean
         }
+        Relationships: []
       }
       reports: {
         Row: {
@@ -499,6 +514,7 @@ export type Database = {
           reviewed_by?: string | null
           reviewed_at?: string | null
         }
+        Relationships: []
       }
       platform_settings: {
         Row: {
@@ -519,6 +535,7 @@ export type Database = {
           updated_at?: string
           updated_by?: string | null
         }
+        Relationships: []
       }
       admin_logs: {
         Row: {
@@ -550,6 +567,7 @@ export type Database = {
           details?: Json | null
           ip_address?: string | null
         }
+        Relationships: []
       }
       subscriptions: {
         Row: {
@@ -581,6 +599,7 @@ export type Database = {
           ends_at?: string | null
           updated_at?: string
         }
+        Relationships: []
       }
     }
     Views: {
@@ -588,33 +607,48 @@ export type Database = {
     }
     Functions: {
       has_role: {
-        Args: {
-          _user_id: string
-          _role_name: string
-        }
+        Args: { _user_id: string; _role_name: string }
         Returns: boolean
       }
       get_user_roles: {
-        Args: {
-          _user_id: string
-        }
+        Args: { _user_id: string }
         Returns: string[]
+      }
+      is_staff: {
+        Args: { _user_id: string }
+        Returns: boolean
+      }
+      is_admin: {
+        Args: { _user_id: string }
+        Returns: boolean
+      }
+      increment_chapter_views: {
+        Args: { chapter_id: string }
+        Returns: undefined
+      }
+      increment_title_views: {
+        Args: { title_id: string }
+        Returns: undefined
       }
     }
     Enums: {
       [_ in never]: never
     }
+    CompositeTypes: {
+      [_ in never]: never
+    }
   }
 }
 
-// Helper types
 export type Profile = Database['public']['Tables']['profiles']['Row']
 export type Title = Database['public']['Tables']['titles']['Row']
 export type Chapter = Database['public']['Tables']['chapters']['Row']
+export type ChapterPage = Database['public']['Tables']['chapter_pages']['Row']
 export type Genre = Database['public']['Tables']['genres']['Row']
 export type UserLibrary = Database['public']['Tables']['user_library']['Row']
 export type Comment = Database['public']['Tables']['comments']['Row']
 export type Notification = Database['public']['Tables']['notifications']['Row']
+export type Report = Database['public']['Tables']['reports']['Row']
 
 export type TitleCategory = Title['category']
 export type TitleStatus = Title['status']
