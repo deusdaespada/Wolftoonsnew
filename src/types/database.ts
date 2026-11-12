@@ -197,7 +197,22 @@ export type Database = {
           title_id?: string
           genre_id?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "title_genres_title_id_fkey"
+            columns: ["title_id"]
+            isOneToOne: false
+            referencedRelation: "titles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "title_genres_genre_id_fkey"
+            columns: ["genre_id"]
+            isOneToOne: false
+            referencedRelation: "genres"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       chapters: {
         Row: {
@@ -404,7 +419,15 @@ export type Database = {
           is_hidden?: boolean
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "comments_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       comment_likes: {
         Row: {
@@ -514,7 +537,15 @@ export type Database = {
           reviewed_by?: string | null
           reviewed_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "reports_reporter_id_fkey"
+            columns: ["reporter_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       platform_settings: {
         Row: {

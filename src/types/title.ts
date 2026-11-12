@@ -1,4 +1,4 @@
-import type { Title, Genre, Chapter } from './database'
+import type { Title, Genre, Chapter, TitleCategory, TitleStatus } from './database'
 
 export type TitleWithGenres = Title & {
   genres: Genre[]
@@ -31,8 +31,8 @@ export type TitleDetail = Title & {
 
 export type CatalogFilters = {
   search?: string
-  category?: string
-  status?: string
+  category?: TitleCategory
+  status?: TitleStatus
   genres?: string[] // genre slugs
   minRating?: number
   sort?: 'popularity' | 'updated' | 'rating' | 'title' | 'newest'
