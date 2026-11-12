@@ -65,11 +65,11 @@ export async function fetchCatalog(filters: CatalogFilters = {}): Promise<Catalo
   }
 
   if (category) {
-    query = query.eq('category', category)
+    query = query.eq('category', category as TitleListItem['category'])
   }
 
   if (status) {
-    query = query.eq('status', status)
+    query = query.eq('status', status as TitleListItem['status'])
   }
 
   if (minRating && minRating > 0) {
@@ -162,9 +162,10 @@ export async function fetchTitleBySlug(slug: string): Promise<TitleDetail | null
 
   if (chaptersError) throw chaptersError
 
+  const row = data as any
   return {
-    ...data,
-    genres: data.title_genres?.map((tg: any) => tg.genres).filter(Boolean) ?? [],
+    ...row,
+    genres: row.title_genres?.map((tg: any) => tg.genres).filter(Boolean) ?? [],
     chapters: chapters ?? [],
   }
 }
