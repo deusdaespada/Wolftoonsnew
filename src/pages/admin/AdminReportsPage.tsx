@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button'
 import { formatRelativeTime, cn } from '@/lib/utils'
 
 export function AdminReportsPage() {
-  const [filter, setFilter] = useState<string | undefined>('pending')
+  const [filter, setFilter] = useState<'pending' | 'reviewed' | 'resolved' | 'dismissed' | undefined>('pending')
   const { data: reports = [], isLoading } = useAdminReports(filter)
   const updateReport = useUpdateReport()
   const hideComment = useHideComment()
@@ -21,7 +21,7 @@ export function AdminReportsPage() {
         {['pending', 'reviewed', 'resolved', 'dismissed', undefined].map((s) => (
           <button
             key={s ?? 'all'}
-            onClick={() => setFilter(s)}
+            onClick={() => setFilter(s as typeof filter)}
             className={cn(
               'rounded-lg px-3 py-1.5 text-xs font-medium transition-all',
               filter === s
