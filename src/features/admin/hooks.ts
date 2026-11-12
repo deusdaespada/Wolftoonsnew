@@ -162,7 +162,9 @@ export function useSetUserRole() {
   })
 }
 
-export function useAdminReports(status?: string) {
+export function useAdminReports(
+  status?: 'pending' | 'reviewed' | 'resolved' | 'dismissed'
+) {
   return useQuery({
     queryKey: ['admin', 'reports', status],
     queryFn: () => fetchAdminReports(status),

@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
+import type { Database, Json } from '@/types/database'
 import type {
   AdminStats,
   AdminTitle,
@@ -140,7 +141,7 @@ export async function updateTitle(
   form: Partial<TitleFormData>,
   userId: string
 ): Promise<void> {
-  const updates: Record<string, unknown> = {}
+  const updates: Database['public']['Tables']['titles']['Update'] = {}
   if (form.title !== undefined) updates.title = form.title
   if (form.slug !== undefined) updates.slug = form.slug
   if (form.description !== undefined) updates.description = form.description || null
@@ -260,7 +261,7 @@ export async function updateChapter(
   form: Partial<ChapterFormData>,
   userId: string
 ): Promise<void> {
-  const updates: Record<string, unknown> = {}
+  const updates: Database['public']['Tables']['chapters']['Update'] = {}
   if (form.number !== undefined) updates.number = form.number
   if (form.title !== undefined) updates.title = form.title || null
   if (form.slug !== undefined) updates.slug = form.slug
@@ -392,7 +393,9 @@ export async function setUserRole(
 
 // ─── Reports ───────────────────────────────────────────────
 
-export async function fetchAdminReports(status?: string): Promise<AdminReport[]> {
+export async function fetchAdminReports(
+  status?: 'pending' | 'reviewed' | 'resolved' | 'dismissed'
+): Promise<AdminReport[]> {
   let query = supabase
     .from('reports')
     .select(`*, profiles!reports_reporter_id_fkey ( id, username, display_name )`)
@@ -511,7 +514,7 @@ async function logAdminAction(
       action,
       target_type: targetType ?? null,
       target_id: targetId ?? null,
-      details: details ?? null,
+      details: (details as Json) ?? null,
     })
   } catch (e) {
     console.error('[AdminLog]', e)
