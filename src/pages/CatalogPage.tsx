@@ -14,8 +14,8 @@ export function CatalogPage() {
 
   const [filters, setFilters] = useState<Filters>(() => ({
     search: searchParams.get('search') ?? undefined,
-    category: searchParams.get('category') ?? undefined,
-    status: searchParams.get('status') ?? undefined,
+    category: (searchParams.get('category') as Filters['category']) ?? undefined,
+    status: (searchParams.get('status') as Filters['status']) ?? undefined,
     genres: searchParams.get('genres')?.split(',').filter(Boolean) ?? undefined,
     minRating: searchParams.get('minRating') ? Number(searchParams.get('minRating')) : undefined,
     sort: (searchParams.get('sort') as Filters['sort']) ?? 'popularity',
