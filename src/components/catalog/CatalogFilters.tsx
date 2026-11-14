@@ -66,7 +66,7 @@ export function CatalogFilters({ filters, genres, onChange, totalResults, isLoad
           {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
             <button
               key={value}
-              onClick={() => update({ category: filters.category === value ? undefined : value })}
+              onClick={() => update({ category: filters.category === value ? undefined : (value as Filters['category']) })}
               className={cn(
                 'rounded-lg px-3 py-1.5 text-xs font-medium transition-all',
                 filters.category === value
@@ -89,7 +89,7 @@ export function CatalogFilters({ filters, genres, onChange, totalResults, isLoad
           {Object.entries(STATUS_LABELS).map(([value, label]) => (
             <button
               key={value}
-              onClick={() => update({ status: filters.status === value ? undefined : value })}
+              onClick={() => update({ status: filters.status === value ? undefined : (value as Filters['status']) })}
               className={cn(
                 'rounded-lg px-3 py-1.5 text-xs font-medium transition-all',
                 filters.status === value
@@ -279,7 +279,7 @@ export function CatalogFilterPanel({
           {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
             <button
               key={value}
-              onClick={() => update({ category: filters.category === value ? undefined : value })}
+              onClick={() => update({ category: filters.category === value ? undefined : (value as Filters['category']) })}
               className={cn(
                 'rounded-lg px-3 py-2 text-left text-sm transition-all',
                 filters.category === value
@@ -302,7 +302,7 @@ export function CatalogFilterPanel({
           {Object.entries(STATUS_LABELS).map(([value, label]) => (
             <button
               key={value}
-              onClick={() => update({ status: filters.status === value ? undefined : value })}
+              onClick={() => update({ status: filters.status === value ? undefined : (value as Filters['status']) })}
               className={cn(
                 'rounded-lg px-3 py-2 text-left text-sm transition-all',
                 filters.status === value
