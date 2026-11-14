@@ -1,5 +1,7 @@
+import { BookOpen } from 'lucide-react'
 import { TitleCard } from './TitleCard'
 import type { TitleListItem } from '@/types/title'
+import { EmptyState } from '@/components/ui/EmptyState'
 import { cn } from '@/lib/utils'
 
 interface TitleGridProps {
@@ -8,12 +10,20 @@ interface TitleGridProps {
   emptyMessage?: string
 }
 
-export function TitleGrid({ titles, className, emptyMessage = 'Nenhuma obra encontrada.' }: TitleGridProps) {
+export function TitleGrid({
+  titles,
+  className,
+  emptyMessage = 'Nenhuma obra encontrada.',
+}: TitleGridProps) {
   if (titles.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <p className="text-wolf-white/50">{emptyMessage}</p>
-      </div>
+      <EmptyState
+        icon={BookOpen}
+        title={emptyMessage}
+        description="Tente outros filtros ou explore o catálogo completo."
+        actionLabel="Ver catálogo"
+        actionHref="/catalog"
+      />
     )
   }
 
@@ -24,8 +34,14 @@ export function TitleGrid({ titles, className, emptyMessage = 'Nenhuma obra enco
         className
       )}
     >
-      {titles.map((title) => (
-        <TitleCard key={title.id} title={title} className="w-full" />
+      {titles.map((title, i) => (
+        <div
+          key={title.id}
+          className="animate-fade-in w-full"
+          style={{ animationDelay: `${Math.min(i * 30, 150)}ms`, animationFillMode: 'both' }}
+        >
+          <TitleCard title={title} className="w-full" />
+        </div>
       ))}
     </div>
   )
